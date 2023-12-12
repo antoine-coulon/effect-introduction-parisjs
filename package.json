@@ -8,6 +8,7 @@
     "export": "slidev export"
   },
   "dependencies": {
+    "unplugin-icons": "^0.18.1",
     "@iconify-json/ri": "^1.1.12",
     "@slidev/cli": "^0.43.12",
     "@slidev/theme-default": "latest",
