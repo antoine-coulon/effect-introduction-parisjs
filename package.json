@@ -8,11 +8,14 @@
     "export": "slidev export"
   },
   "dependencies": {
-    "unplugin-icons": "^0.18.1",
     "@iconify-json/ri": "^1.1.12",
     "@slidev/cli": "^0.43.12",
+    "@slidev/theme-apple-basic": "^0.20.0",
     "@slidev/theme-default": "latest",
     "@slidev/theme-seriph": "latest",
-    "effect": "^2.0.0-next.56"
+    "effect": "^2.0.0-next.56",
+    "slidev-theme-eloc": "^1.0.2",
+    "slidev-theme-geist": "^0.8.1",
+    "unplugin-icons": "^0.18.1"
   }
 }
