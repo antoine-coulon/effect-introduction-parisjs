@@ -22,7 +22,7 @@ drawings:
 css: unocss
 ---
 
-## Effect, une solution efficace aux problèmes de software engineering
+## **Effect, une solution efficace aux problèmes de software engineering**
 
 <br>
 
@@ -40,9 +40,9 @@ css: unocss
     <div class="leading-8 mt-8 flex flex-col">
       <p class="mt-3">Lead Software Engineer @ <b color="cyan">evryg</b></p>
       <p class="mt-3">Créateur <b color="cyan">skott</b></p>
-      <p class="mt-3">Créateur <b color="cyan">effect-introduction</b></p>
+      <p class="mt-3">Auteur <b color="cyan">effect-introduction</b></p>
       <p class="mt-3">Contributeur <b color="cyan">Rush.js, NodeSecure</b></p>
-    </div>
+    </div>  
   </div>
   <div class="border-l border-gray-400 border-opacity-25 !all:leading-12 !all:list-none my-auto">
   </div>
@@ -72,7 +72,7 @@ css: unocss
 
 ---
 
-## Effect : le <b color="green">pourquoi</b> plutôt que le <b color="orange">comment</b>
+## **Effect : le <b color="green">pourquoi</b> plutôt que le <b color="orange">comment</b>**
 
 <br>
 
@@ -84,7 +84,7 @@ css: unocss
 
 ---
 
-## Effect ne résout pas uniquement des problèmes propres à TypeScript 
+## **Effect ne résout pas uniquement des problèmes propres à TypeScript**
 
 <div class="grid grid-cols-2 gap-x-4 pt-5">
 
@@ -111,7 +111,7 @@ css: unocss
 </div>
 ---
 
-## Prélude : qu'est-ce qu'un Effect
+## **Prélude : qu'est-ce qu'un Effect**
 
 <br>
 
@@ -132,7 +132,7 @@ const now: Effect.Effect<Date, never, Clock> = //
 
 ---
 
-## Explicitation : mais où sont les erreurs et dépendances ?
+## **Explicitation : mais où sont les erreurs et dépendances ?**
 
 <br>
 
@@ -144,7 +144,7 @@ const now: Effect.Effect<Date, never, Clock> = //
 
 ---
 
-## Explicitation (erreurs) : opérations synchrones
+## **Explicitation (erreurs) : opérations synchrones**
 
 <div class="grid grid-cols-2 gap-x-4 pt-5">
 
@@ -183,7 +183,7 @@ Error: Oops!
 
 ---
 
-## Explicitation (erreurs) : à la recherche de l'info perdue
+## **Explicitation (erreurs) : à la recherche de l'info perdue**
 
 <div>
 
@@ -217,7 +217,7 @@ try {
 
 ---
 
-## Explicitation (erreurs) : opérations asynchrones
+## **Explicitation (erreurs) : opérations asynchrones**
 
 Utilisation des Promises, une des primitives asynchrones
 
@@ -242,7 +242,7 @@ try {
 
 ---
 
-## Explicitation (erreurs) : Effect à la rescousse
+## **Explicitation (erreurs) : Effect à la rescousse**
 
 ```ts {3-9|11-12|14-21|11-23} {lines:true}
 import { Effect, pipe } from "effect";
@@ -271,7 +271,7 @@ type main = Effect.Effect<number, never, never>;
 
 ---
 
-## Explicitation : et les dépendances ?
+## **Explicitation : et les dépendances ?**
 
 <b>Gestion explicite et puissante des erreurs typées</b>
 - filtering
@@ -294,7 +294,7 @@ interface Effect<
 
 ---
 
-## Explicitation (dépendances) : inférence automatique des dépendances
+## **Explicitation (dépendances) : inférence automatique des dépendances**
 
 ```ts {9-13|19-21|16|all} {lines:true}
 import { Context, Effect } from "effect";
@@ -326,7 +326,7 @@ Dès lors qu'une dépendance est utilisée elle est automatiquement propagée et
 
 ---
 
-## Explicitation (dépendances) : type-safety autour du contexte
+## **Explicitation (dépendances) : type-safety autour du contexte**
 
 
 ```ts {9-11|3,6-7|13-18|21} {lines:true}
@@ -365,7 +365,7 @@ R est inféré de manière profonde -> généraliser avec l'ensemble d'un progra
 
 ---
 
-## Testing
+## **Testing**
 
 <br>
 
@@ -404,7 +404,7 @@ Effect facilite la testabilité
 -->
 ---
 
-## Résilience
+## **Résilience**
 
 <br>
 
@@ -421,7 +421,7 @@ Effect facilite la testabilité
 
 ---
 
-## Résilience : recovery et retries
+## **Résilience : recovery et retries**
 
 <div class="grid grid-cols-5 gap-x-4 pt-5">
 
@@ -481,7 +481,7 @@ const programWithRetryPolicy = pipe(
 
 ---
 
-## Résilience : la nécessité d'interruption et de cleanup
+## **Résilience : la nécessité d'interruption et de cleanup**
 
 <div class="grid grid-cols-2 gap-x-4 pt-5">
 
@@ -550,7 +550,7 @@ const backgroundJob = Effect.async(() => {
 
 ---
 
-## Concurrence 
+## **Concurrence**
 
 <br>
 
@@ -568,7 +568,7 @@ Gérer la concurrence correctement c'est compliqué :
 
 ---
 
-## Concurrence : bounded vs unbounded
+## **Concurrence : bounded vs unbounded**
 
 <div class="grid grid-cols-2 gap-x-4 pt-5">
 
@@ -624,7 +624,7 @@ Transition parfaite vers ressource management
 -->
 ---
 
-## Resource management
+## **Resource management**
 
 <br>
 
@@ -640,7 +640,7 @@ Transition parfaite vers ressource management
 
 ---
 
-## Et aussi d'autres modules...
+## **Et aussi d'autres modules...**
 
 
 <div class="grid grid-cols-2 gap-x-4 pt-5">
@@ -669,7 +669,7 @@ Transition parfaite vers ressource management
 
 ---
 
-## Merci d'avoir écouté !
+## **Merci d'avoir écouté !**
 
 - **Effect website**: <b color="cyan">https://effect.website</b>
   

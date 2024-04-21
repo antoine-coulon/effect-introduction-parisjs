@@ -33,7 +33,7 @@ jobs:
         run:  npm i -g @slidev/theme-default && npm i -g @slidev/cli
 
       - name: Build
-        run: slidev build --base /effect-introduction-for-paris-typescript-meetup/
+        run: slidev build --base /effect-introduction-for-paris-js/
 
       - uses: actions/configure-pages@v3
 
