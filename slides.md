@@ -1,6 +1,6 @@
 ---
 # try also 'default' to start simple
-theme: eloc
+theme: default
 # random image from a curated Unsplash collection by Anthony
 # like them? see https://unsplash.com/collections/94734566/slidev
 background: https://images.unsplash.com/photo-1533134486753-c833f0ed4866?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
@@ -12,7 +12,7 @@ highlighter: shiki
 lineNumbers: false
 # some information about the slides, markdown enabled
 info: |
-  ## Antoine Coulon, Paris TypeScript # 35
+  ## Antoine Coulon, Paris.js # 115
   
   Effect, une solution efficace aux problèmes de software engineering
 # persist drawings in exports and build
@@ -27,7 +27,7 @@ css: unocss
 <br>
 
 <h4 class="mt-10">
-  Antoine Coulon @ Paris TypeScript #35 - 12/12/2023
+  Antoine Coulon @ Paris.js #115 - 24/04/2024
 </h4>
 
 ---
@@ -36,37 +36,39 @@ css: unocss
 
 <div class="col-start-1 col-span-7 grid grid-cols-[3fr,2fr] mr-10">
   <div class="pb-4">
-    <h1>Antoine Coulon</h1>
-    <div class="leading-8">
-      Lead Software Engineer @ evryg
-      <br>
-      Open Source: NodeSecure, skott, Effect, Rush.js
+    <h1><b>Antoine Coulon</b></h1>
+    <div class="leading-8 mt-8 flex flex-col">
+      <p class="mt-3">Lead Software Engineer @ <b color="cyan">evryg</b></p>
+      <p class="mt-3">Créateur <b color="cyan">skott</b></p>
+      <p class="mt-3">Créateur <b color="cyan">effect-introduction</b></p>
+      <p class="mt-3">Contributeur <b color="cyan">Rush.js, NodeSecure</b></p>
     </div>
   </div>
   <div class="border-l border-gray-400 border-opacity-25 !all:leading-12 !all:list-none my-auto">
   </div>
 
-  <div>
-    <div class="mb-4"><ri-github-line color="blue"/> <b color="opacity-30">antoine-coulon</b></div>
-    <div class="mb-4"><ri-twitter-line color="blue"/> <b color="opacity-30">c9antoine</b></div>
-    <div class="mb-4"><ri-user-3-line color="blue"/> <b color="opacity-30">dev.to/antoinecoulon</b></div>
-  </div>
 </div>
 
 <div class="pl-20 col-start-8 col-span-10">
-  <img src="https://avatars.githubusercontent.com/u/43391199?s=400&u=b394996dd7ddc0bf7a317185ee9c378d5b609e12&v=4" class="rounded-full w-40" />
+  <img src="https://avatars.githubusercontent.com/u/43391199?s=400&u=b394996dd7ddc0bf7a317185ee9c378d5b609e12&v=4" class="rounded-full w-40 margin-0-auto" />
+
+  <div class="mt-5">
+    <div class="mb-4 flex justify-between"><ri-github-line color="blue"/> <b color="opacity-30 ml-2">antoine-coulon</b></div>
+    <div class="mb-4 flex justify-between"><ri-twitter-line color="blue"/> <b color="opacity-30 ml-2">c9antoine</b></div>
+    <div class="mb-4 flex justify-between"><ri-user-3-line color="blue"/> <b color="opacity-30 ml-2">dev.to/antoinecoulon</b></div>
+  </div>
 </div>
 
 </div>
-
 
 <style>
-h1 {
-  color: #008ad6;
-  font-weight: bold;
-}
+  h1 {
+    color: #4c7fff;
+  }
+  img {
+    margin: 0 auto;
+  }
 </style>
-
 
 ---
 
@@ -113,19 +115,19 @@ h1 {
 
 <br>
 
-Un Effect se définit à l'aide d'un datatype <b color="blue">Effect<R, E, A></b>
-- <b color="blue">[R]</b> représente l'ensemble des dépendances requises pour que l'Effect puisse être exécuté
-- <b color="blue">[E]</b> représente l'ensemble des erreurs connues qui peuvent survenir lors de l'exécution
+Un Effect se définit à l'aide d'un datatype <b color="blue">Effect<A, E, R></b>
 - <b color="blue">[A]</b> représente le résultat qui peut être produit en cas de réussite de l'exécution
+- <b color="blue">[E]</b> représente l'ensemble des erreurs connues qui peuvent survenir lors de l'exécution
+- <b color="blue">[R]</b> représente l'ensemble des dépendances requises pour que l'Effect puisse être exécuté
 
 <br>
 
 ```ts
 import { Effect } from "effect";  
 
-const randomString: Effect.Effect<never, never, string> = //
+const randomString: Effect.Effect<string, never, never> = //
 
-const now: Effect.Effect<Clock, never, Date> = //
+const now: Effect.Effect<Date, never, Clock> = //
 ```
 
 ---
@@ -253,8 +255,7 @@ class NumberIsTooSmallError {
   readonly _tag = "NumberIsTooSmallError";
 }
 
-export const generateRandomNumber: Effect.Effect<
-never, NumberIsTooBigError | NumberIsTooSmallError, number> = //
+export const generateRandomNumber: Effect.Effect<number, NumberIsTooBigError | NumberIsTooSmallError, never> = //
 
 const main = pipe(
   generateRandomNumber,
@@ -265,7 +266,7 @@ const main = pipe(
   })
 );
 
-type main = Effect.Effect<never, never, number>;
+type main = Effect.Effect<number, never, never>;
 ```
 
 ---
@@ -284,9 +285,9 @@ type main = Effect.Effect<never, never, number>;
 
 ```ts {0|3-4|2|all} 
 interface Effect<
-  R, // context channel
+  A,  // success channel
   E, // error channel 
-  A  // success channel
+  R, // context channel
 > {}
 ```
 </div>
@@ -305,15 +306,15 @@ class UserAlreadyExistsError {
 class CreatedUser {}
 
 interface UserRepository {
-  createUser: () => Effect.Effect<never, UserAlreadyExistsError, CreatedUser>;
+  createUser: () => Effect.Effect<CreatedUser, UserAlreadyExistsError, never>;
 }
 
-const UserRepository = Context.Tag<UserRepository>();
+const UserRepository = Context.GenericTag<UserRepository>("UserRepository");
 
 const registerUser: Effect.Effect<
-  UserRepository, 
+  CreatedUser,
   UserAlreadyExistsError, 
-  CreatedUser
+  UserRepository,
 > = Effect.flatMap(UserRepository, (userRepository) => userRepository.createUser());
 ```
 
@@ -328,20 +329,20 @@ Dès lors qu'une dépendance est utilisée elle est automatiquement propagée et
 ## Explicitation (dépendances) : type-safety autour du contexte
 
 
-```ts {9-11|3-4|13-18|21} {lines:true}
+```ts {9-11|3,6-7|13-18|21} {lines:true}
 import { Effect, pipe } from "effect";
 
 const registerUser: Effect.Effect<
-  UserRepository, 
+  CreatedUser,
   UserAlreadyExistsError,
-  CreatedUser
+  UserRepository
 > = // whatever Effect there
 
 // ts(2345): Type 'UserRepository' is not assignable to type 'never'
 //             ^^^^^^^^^^^^
 Effect.runSync(registerUser);
 
-const registerUserWithSatisfiedDependencies: Effect<never, UserAlreadyExistsError, CreatedUser> = pipe(
+const registerUserWithSatisfiedDependencies: Effect<CreatedUser, UserAlreadyExistsError, never> = pipe(
   registerUser,
   Effect.provideService(UserRepository, {
     createUser: () => Effect.succeed(new CreatedUser()),
@@ -608,7 +609,7 @@ const users = pipe(
     // OR
     { concurrency: "unbounded" },
     // OR
-    { concurrency: "inherited" }
+    { concurrency: "inherit" }
   )
 );
 ```
@@ -645,13 +646,13 @@ Transition parfaite vers ressource management
 <div class="grid grid-cols-2 gap-x-4 pt-5">
 
 <ul>
+<li>Batching/Caching</li>
+<li>Tracing/Monitoring</li>
 <li>Layer</li>
 <li>Stream</li>
 <li>Queue</li>
 <li>Semaphore </li>
 <li>Pub/Sub </li>
-<li>Batching/Caching</li>
-<li>Tracing/Monitoring</li>
 <li>Config</li>
 </ul>
 
