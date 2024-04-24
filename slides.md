@@ -296,7 +296,7 @@ interface Effect<
 
 ## **Explicitation (dépendances) : inférence automatique des dépendances**
 
-```ts {9-13|19-21|16|all} {lines:true}
+```ts {9-13|19-21|18|all} {lines:true}
 import { Context, Effect } from "effect";
 
 class UserAlreadyExistsError {
